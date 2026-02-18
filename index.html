@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Soap | Boutique Officielle Tunisie</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        .font-arabic { font-family: 'Cairo', sans-serif; }
+        html[lang="fr"] .ar-text { display: none !important; }
+        html[lang="ar"] .fr-text { display: none !important; }
+        [dir="rtl"] { text-align: right; }
+        .product-card:hover { transform: translateY(-5px); transition: 0.3s; }
+        #cart-modal { display: none; }
+        .qty-btn { width: 36px; height: 36px; border-radius: 10px; background: #f3f4f6; font-weight: bold; cursor: pointer; border: none; display: flex; align-items: center; justify-content: center; }
+        
+        /* Correction pour le numéro de téléphone en mode Arabe */
+        .phone-number { 
+            direction: ltr !important; 
+            display: inline-block; 
+            unicode-bidi: embed;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 md:py-6 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="Fruit_Soap_logo.jpg" alt="Logo" class="w-20 h-20 md:w-36 md:h-36 rounded-3xl object-cover shadow-md border-2 border-green-50">
+                <div class="ml-4 md:ml-8">
+                    <h1 class="text-2xl md:text-5xl font-black text-green-600 tracking-tighter uppercase">Fruit Soap</h1>
+                    <p class="text-orange-500 font-bold text-xs md:text-sm tracking-widest hidden sm:block">ARTISANAL & NATUREL TUNISIE</p>
+                </div>
+            </div>
+
+            <nav class="hidden lg:flex space-x-10 font-black text-lg text-gray-700">
+                <a href="#home" class="hover:text-green-600 transition fr-text">Accueil</a>
+                <a href="#home" class="hover:text-green-600 transition ar-text font-arabic">الرئيسية</a>
+                <a href="#products" class="hover:text-green-600 transition fr-text">Boutique</a>
+                <a href="#products" class="hover:text-green-600 transition ar-text font-arabic">المتجر</a>
+                <a href="#about" class="hover:text-green-600 transition fr-text">À propos</a>
+                <a href="#about" class="hover:text-green-600 transition ar-text font-arabic">من نحن</a>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <button onclick="toggleCart()" class="relative p-2 text-gray-800 hover:text-green-600 transition">
+                    <i class="fas fa-shopping-basket text-3xl md:text-4xl"></i>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-bold">0</span>
+                </button>
+                <button onclick="switchLanguage()" class="bg-green-600 text-white px-4 py-2 rounded-2xl text-sm font-black shadow-lg hover:bg-green-700 transition uppercase">AR/FR</button>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="py-12 bg-white">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <div>
+                <h2 class="text-4xl md:text-5xl font-extrabold mb-6 fr-text leading-tight">Le naturel s'invite dans votre douche</h2>
+                <h2 class="text-4xl md:text-5xl font-extrabold mb-6 ar-text font-arabic leading-tight">الطبيعة في قلب حمامك</h2>
+                <div class="aspect-video bg-black rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+                    <video autoplay loop muted playsinline controls class="w-full h-full object-cover">
+                        <source src="Presentation Fruit_Soap.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="bg-orange-50 p-8 rounded-3xl border-l-8 border-orange-400 italic text-gray-700">
+                <p class="fr-text text-xl leading-relaxed">"Chaque savon est une œuvre d'art artisanale, conçue avec la douceur de la glycérine végétale pour une peau éclatante."</p>
+                <p class="ar-text font-arabic text-2xl leading-relaxed">"كل صابونة هي لوحة فنية، صممت بعناية من الجلسرين النباتي لترطيب ونعومة فائقة."</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6 text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-black fr-text">Nos Créations</h2>
+            <h2 class="text-4xl md:text-5xl font-black ar-text font-arabic">منتجاتنا</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 container mx-auto px-6">
+            <div class="bg-white rounded-3xl shadow-xl p-6 border border-gray-100 product-card flex flex-col">
+                <img src="raisin.jpg" class="w-full h-64 object-cover rounded-2xl mb-4" alt="Raisin">
+                <h3 class="text-xl font-bold fr-text">Savon Raisin</h3><h3 class="text-xl font-bold ar-text font-arabic">صابون عنب</h3>
+                <p class="text-gray-500 text-sm mt-2 fr-text italic">"Riche en antioxydants pour une peau tonifiée."</p>
+                <p class="text-gray-500 text-sm mt-2 ar-text font-arabic italic">"غني بمضادات الأكسدة لنضارة البشرة."</p>
+                <p class="text-green-600 text-3xl font-black my-4">18.600 DT</p>
+                <div class="flex items-center justify-center space-x-4 mb-4">
+                    <button onclick="changeQty('p1', -1)" class="qty-btn">-</button><span id="qty-p1" class="font-bold text-xl w-6 text-center">1</span><button onclick="changeQty('p1', 1)" class="qty-btn">+</button>
+                </div>
+                <button onclick="addToCart('p1', 'Savon Raisin', 'صابون عنب', 18.600)" class="w-full bg-orange-500 text-white py-4 rounded-2xl font-bold hover:bg-orange-600 transition shadow-lg">Commander</button>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-xl p-6 border border-gray-100 product-card flex flex-col">
+                <img src="pasteque.jpg" class="w-full h-64 object-cover rounded-2xl mb-4" alt="Pastèque">
+                <h3 class="text-xl font-bold fr-text">Savon Pastèque</h3><h3 class="text-xl font-bold ar-text font-arabic">صابون بطيخ</h3>
+                <p class="text-gray-500 text-sm mt-2 fr-text italic">"Hydratation intense et fraîcheur estivale."</p>
+                <p class="text-gray-500 text-sm mt-2 ar-text font-arabic italic">"ترطيب مكثف وانتعاش صيفي."</p>
+                <p class="text-green-600 text-3xl font-black my-4">9.600 DT</p>
+                <div class="flex items-center justify-center space-x-4 mb-4">
+                    <button onclick="changeQty('p2', -1)" class="qty-btn">-</button><span id="qty-p2" class="font-bold text-xl w-6 text-center">1</span><button onclick="changeQty('p2', 1)" class="qty-btn">+</button>
+                </div>
+                <button onclick="addToCart('p2', 'Savon Pastèque', 'صابون بطيخ', 9.600)" class="w-full bg-orange-500 text-white py-4 rounded-2xl font-bold hover:bg-orange-600 shadow-lg">Commander</button>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-xl p-6 border border-gray-100 product-card flex flex-col">
+                <img src="orange.jpg" class="w-full h-64 object-cover rounded-2xl mb-4" alt="Orange">
+                <h3 class="text-xl font-bold fr-text">Savon Orange</h3><h3 class="text-xl font-bold ar-text font-arabic">صابون برتقال</h3>
+                <p class="text-gray-500 text-sm mt-2 fr-text italic">"Un boost de vitamine C pour votre peau."</p>
+                <p class="text-gray-500 text-sm mt-2 ar-text font-arabic italic">"جرعة من فيتامين C لبشرتك."</p>
+                <p class="text-green-600 text-3xl font-black my-4">9.600 DT</p>
+                <div class="flex items-center justify-center space-x-4 mb-4">
+                    <button onclick="changeQty('p3', -1)" class="qty-btn">-</button><span id="qty-p3" class="font-bold text-xl w-6 text-center">1</span><button onclick="changeQty('p3', 1)" class="qty-btn">+</button>
+                </div>
+                <button onclick="addToCart('p3', 'Savon Orange', 'صابون برتقال', 9.600)" class="w-full bg-orange-500 text-white py-4 rounded-2xl font-bold hover:bg-orange-600 shadow-lg">Commander</button>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-xl p-6 border border-gray-100 product-card flex flex-col">
+                <img src="pomme.jpg" class="w-full h-64 object-cover rounded-2xl mb-4" alt="Pomme">
+                <h3 class="text-xl font-bold fr-text">Savon Pomme</h3><h3 class="text-xl font-bold ar-text font-arabic">صابون تفاح</h3>
+                <p class="text-gray-500 text-sm mt-2 fr-text italic">"Douceur fruitée pour un nettoyage délicat."</p>
+                <p class="text-gray-500 text-sm mt-2 ar-text font-arabic italic">"نعومة الفواكه لتنظيف لطيف."</p>
+                <p class="text-green-600 text-3xl font-black my-4">9.600 DT</p>
+                <div class="flex items-center justify-center space-x-4 mb-4">
+                    <button onclick="changeQty('p4', -1)" class="qty-btn">-</button><span id="qty-p4" class="font-bold text-xl w-6 text-center">1</span><button onclick="changeQty('p4', 1)" class="qty-btn">+</button>
+                </div>
+                <button onclick="addToCart('p4', 'Savon Pomme', 'صابون تفاح', 9.600)" class="w-full bg-orange-500 text-white py-4 rounded-2xl font-bold hover:bg-orange-600 shadow-lg">Commander</button>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-xl p-6 border border-gray-100 product-card flex flex-col">
+                <img src="citron.jpg" class="w-full h-64 object-cover rounded-2xl mb-4" alt="Citron">
+                <h3 class="text-xl font-bold fr-text">Savon Citron</h3><h3 class="text-xl font-bold ar-text font-arabic">صابون ليمون</h3>
+                <p class="text-gray-500 text-sm mt-2 fr-text italic">"Purifiant et énergisant au quotidien."</p>
+                <p class="text-gray-500 text-sm mt-2 ar-text font-arabic italic">"منقي ومنشط يومي."</p>
+                <p class="text-green-600 text-3xl font-black my-4">9.600 DT</p>
+                <div class="flex items-center justify-center space-x-4 mb-4">
+                    <button onclick="changeQty('p5', -1)" class="qty-btn">-</button><span id="qty-p5" class="font-bold text-xl w-6 text-center">1</span><button onclick="changeQty('p5', 1)" class="qty-btn">+</button>
+                </div>
+                <button onclick="addToCart('p5', 'Savon Citron', 'صابون ليمون', 9.600)" class="w-full bg-orange-500 text-white py-4 rounded-2xl font-bold hover:bg-orange-600 shadow-lg">Commander</button>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-xl p-6 border border-gray-100 product-card flex flex-col">
+                <img src="fraise.jpg" class="w-full h-64 object-cover rounded-2xl mb-4" alt="Fraise">
+                <h3 class="text-xl font-bold fr-text">Savon Fraise</h3><h3 class="text-xl font-bold ar-text font-arabic">صابون فراولة</h3>
+                <p class="text-gray-500 text-sm mt-2 fr-text italic">"Un parfum irrésistible et gourmand."</p>
+                <p class="text-gray-500 text-sm mt-2 ar-text font-arabic italic">"عطر لا يقاوم وبشرة ناعمة."</p>
+                <p class="text-green-600 text-3xl font-black my-4">9.600 DT</p>
+                <div class="flex items-center justify-center space-x-4 mb-4">
+                    <button onclick="changeQty('p6', -1)" class="qty-btn">-</button><span id="qty-p6" class="font-bold text-xl w-6 text-center">1</span><button onclick="changeQty('p6', 1)" class="qty-btn">+</button>
+                </div>
+                <button onclick="addToCart('p6', 'Savon Fraise', 'صابون فراولة', 9.600)" class="w-full bg-orange-500 text-white py-4 rounded-2xl font-bold hover:bg-orange-600 shadow-lg transition">Commander</button>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-xl p-6 border border-gray-100 product-card flex flex-col">
+                <img src="poire.jpg" class="w-full h-64 object-cover rounded-2xl mb-4" alt="Poire">
+                <h3 class="text-xl font-bold fr-text">Savon Poire</h3><h3 class="text-xl font-bold ar-text font-arabic">صابون إجاص</h3>
+                <p class="text-gray-500 text-sm mt-2 fr-text italic">"Équilibre et douceur pour peaux sensibles."</p>
+                <p class="text-gray-500 text-sm mt-2 ar-text font-arabic italic">"توازن ونعومة للبشرة الحساسة."</p>
+                <p class="text-green-600 text-3xl font-black my-4">9.600 DT</p>
+                <div class="flex items-center justify-center space-x-4 mb-4">
+                    <button onclick="changeQty('p7', -1)" class="qty-btn">-</button><span id="qty-p7" class="font-bold text-xl w-6 text-center">1</span><button onclick="changeQty('p7', 1)" class="qty-btn">+</button>
+                </div>
+                <button onclick="addToCart('p7', 'Savon Poire', 'صابون إجاص', 9.600)" class="w-full bg-orange-500 text-white py-4 rounded-2xl font-bold hover:bg-orange-600 shadow-lg transition">Commander</button>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-xl p-6 border border-gray-100 product-card flex flex-col">
+                <img src="banane.jpg" class="w-full h-64 object-cover rounded-2xl mb-4" alt="Banane">
+                <h3 class="text-xl font-bold fr-text">Savon Banane</h3><h3 class="text-xl font-bold ar-text font-arabic">صابون موز</h3>
+                <p class="text-gray-500 text-sm mt-2 fr-text italic">"Nourrissant et apaisant pour une peau soyeuse."</p>
+                <p class="text-gray-500 text-sm mt-2 ar-text font-arabic italic">"مغذي ومهدئ لبشرة حريرية."</p>
+                <p class="text-green-600 text-3xl font-black my-4">9.600 DT</p>
+                <div class="flex items-center justify-center space-x-4 mb-4">
+                    <button onclick="changeQty('p8', -1)" class="qty-btn">-</button><span id="qty-p8" class="font-bold text-xl w-6 text-center">1</span><button onclick="changeQty('p8', 1)" class="qty-btn">+</button>
+                </div>
+                <button onclick="addToCart('p8', 'Savon Banane', 'صابون موز', 9.600)" class="w-full bg-orange-500 text-white py-4 rounded-2xl font-bold hover:bg-orange-600 shadow-lg transition">Commander</button>
+            </div>
+
+            <div class="bg-orange-50 rounded-[2.5rem] shadow-2xl p-8 border-4 border-orange-200 product-card flex flex-col lg:scale-105 z-10">
+                <img src="pack cadeau.jpg" class="w-full h-64 object-cover rounded-3xl mb-6 shadow-md" alt="Pack Cadeau">
+                <h3 class="text-3xl font-black text-orange-600 fr-text text-center">Pack Cadeau</h3><h3 class="text-3xl font-black text-orange-600 ar-text font-arabic text-center">باقة هدايا</h3>
+                <p class="text-gray-600 text-sm mt-2 fr-text text-center italic">"L'assortiment parfait pour offrir le meilleur de la nature."</p>
+                <p class="text-gray-600 text-sm mt-2 ar-text font-arabic text-center italic">"التشكيلة المثالية لتقديم أفضل ما في الطبيعة كهدية."</p>
+                <p class="text-orange-600 text-4xl font-black my-4 text-center">39.200 DT</p>
+                <div class="flex items-center justify-center space-x-6 mb-6">
+                    <button onclick="changeQty('p9', -1)" class="qty-btn bg-white shadow-sm">-</button><span id="qty-p9" class="font-bold text-2xl w-8 text-center">1</span><button onclick="changeQty('p9', 1)" class="qty-btn bg-white shadow-sm">+</button>
+                </div>
+                <button onclick="addToCart('p9', 'Pack Cadeau', 'باقة هدايا', 39.200)" class="w-full bg-green-600 text-white py-5 rounded-2xl font-black text-xl hover:bg-green-700 shadow-xl transition uppercase">Offrir ce pack</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-green-600 text-white">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div class="text-center md:text-left">
+                <h2 class="text-4xl md:text-5xl font-black mb-8 fr-text">Notre Histoire</h2>
+                <h2 class="text-4xl md:text-5xl font-black mb-8 ar-text font-arabic">قصتنا</h2>
+                <p class="text-xl opacity-90 leading-relaxed mb-6 fr-text">Fruit Soap est né d'une passion pour la nature tunisienne. Nos savons artisanaux sont fabriqués avec soin pour offrir à votre peau le meilleur des fruits.</p>
+                <p class="text-xl opacity-90 leading-relaxed mb-6 ar-text font-arabic">ولدت Fruit Soap من شغف بالطبيعة التونسية. صابوننا المصنوع يدويًا بعناية يقدم لبشرتك أفضل ما في الفواكه.</p>
+            </div>
+            <div class="flex justify-center">
+                <img src="Fruit_Soap_logo.jpg" class="w-40 h-40 md:w-56 md:h-56 rounded-[2.5rem] shadow-2xl border-4 border-green-500 transition duration-500">
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
+            <div>
+                <h3 class="text-3xl font-black text-green-400">Fruit Soap</h3>
+                <p class="mt-4 text-gray-400">Artisanat 100% Tunisien.</p>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold text-orange-400 mb-6 uppercase">Contact</h4>
+                <p class="text-2xl font-black"><i class="fab fa-whatsapp text-green-500 mr-3"></i> <span class="phone-number">+216 56 511 138</span></p>
+                <div class="mt-6 flex justify-center md:justify-start">
+                    <a href="https://www.facebook.com/profile.php?id=61585058864418" target="_blank" class="text-4xl hover:text-blue-500 transition"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold text-orange-400 mb-6 uppercase">Navigation</h4>
+                <ul class="space-y-2 opacity-70">
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#products">Boutique</a></li>
+                    <li><a href="#about">À propos</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <div id="cart-modal" class="fixed inset-0 z-[60] bg-black bg-opacity-70 backdrop-blur-sm flex justify-end">
+        <div class="bg-white w-full max-w-md h-full p-8 flex flex-col shadow-2xl overflow-y-auto">
+            <div class="flex justify-between items-center border-b pb-4">
+                <h2 class="text-2xl font-black text-green-600 fr-text">Mon Panier</h2>
+                <h2 class="text-2xl font-black text-green-600 ar-text font-arabic">سلتي</h2>
+                <button onclick="toggleCart()" class="text-4xl text-gray-400 hover:text-red-500">&times;</button>
+            </div>
+            <div id="cart-items" class="py-6 space-y-4 flex-grow"></div>
+            <div class="border-t pt-6">
+                <div class="flex justify-between font-black text-2xl mb-6">
+                    <span>Total:</span><span id="cart-total" class="text-green-600">0.000 DT</span>
+                </div>
+                <div class="space-y-4 mb-6">
+                    <input type="text" id="client-name" placeholder="Nom et Prénom" class="w-full p-3 rounded-xl border border-gray-200 focus:border-green-500 outline-none">
+                    <input type="text" id="client-address" placeholder="Ville / Adresse" class="w-full p-3 rounded-xl border border-gray-200 focus:border-green-500 outline-none">
+                </div>
+                <button onclick="sendWhatsApp()" class="w-full bg-green-600 text-white py-4 rounded-2xl font-black text-xl flex items-center justify-center hover:bg-green-700 transition">
+                    <i class="fab fa-whatsapp mr-3 text-2xl"></i> CONFIRMER
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchLanguage() {
+            const h = document.documentElement;
+            const currentLang = h.getAttribute('lang');
+            if (currentLang === 'fr') {
+                h.setAttribute('lang', 'ar');
+                h.setAttribute('dir', 'rtl');
+            } else {
+                h.setAttribute('lang', 'fr');
+                h.setAttribute('dir', 'ltr');
+            }
+            updateCart();
+        }
+
+        function changeQty(id, delta) {
+            const s = document.getElementById('qty-' + id);
+            let v = parseInt(s.innerText) + delta;
+            if (v < 1) v = 1; s.innerText = v;
+        }
+
+        let cart = [];
+
+        function toggleCart() {
+            const m = document.getElementById('cart-modal');
+            m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        function addToCart(id, nF, nA, p) {
+            const qty = parseInt(document.getElementById('qty-' + id).innerText);
+            const ex = cart.find(i => i.id === id);
+            if (ex) { ex.qty += qty; } else { cart.push({ id, nF, nA, p, qty }); }
+            updateCart(); toggleCart();
+            document.getElementById('qty-' + id).innerText = 1;
+        }
+
+        function updateCart() {
+            const isAr = document.documentElement.getAttribute('lang') === 'ar';
+            document.getElementById('cart-count').innerText = cart.length;
+            const c = document.getElementById('cart-items');
+            c.innerHTML = ''; let t = 0;
+            if(cart.length === 0) { 
+                c.innerHTML = `<p class="text-center text-gray-400">${isAr ? 'السلة فارغة' : 'Panier vide'}</p>`; 
+            }
+            cart.forEach((i, idx) => {
+                const sub = i.p * i.qty; t += sub;
+                c.innerHTML += `<div class="flex justify-between items-center bg-gray-50 p-4 rounded-xl border">
+                    <div>
+                        <p class="font-bold">${isAr ? i.nA : i.nF} (x${i.qty})</p>
+                        <p class="text-green-600 font-bold">${sub.toFixed(3)} DT</p>
+                    </div>
+                    <button onclick="cart.splice(${idx},1);updateCart();" class="text-red-500"><i class="fas fa-trash"></i></button>
+                </div>`;
+            });
+            document.getElementById('cart-total').innerText = t.toFixed(3) + ' DT';
+        }
+
+        function sendWhatsApp() {
+            const isAr = document.documentElement.getAttribute('lang') === 'ar';
+            const name = document.getElementById('client-name').value;
+            const address = document.getElementById('client-address').value;
+            if (cart.length === 0 || !name || !address) { 
+                alert(isAr ? "الرجاء إكمال البيانات" : "Veuillez remplir vos coordonnées"); 
+                return; 
+            }
+            // Numéro mis à jour ici
+            const monNumero = "21656511138"; 
+            let m = `*Fruit Soap - Nouvelle Commande*\n\n`;
+            m += `*Client :* ${name}\n*Adresse :* ${address}\n\n`;
+            cart.forEach(i => { m += `- ${i.nF} x${i.qty} = ${(i.p * i.qty).toFixed(3)} DT\n`; });
+            m += `\n*TOTAL : ${document.getElementById('cart-total').innerText}*`;
+            window.open("https://wa.me/" + monNumero + "?text=" + encodeURIComponent(m), '_blank');
+        }
+    </script>
+</body>
+</html>
